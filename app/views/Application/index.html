@@ -1,0 +1,34 @@
+#{extends 'main.html' /}
+#{set title:'WPA - home' /}
+
+<!-- featured div starts here -->
+		<div id="featured">
+			<div class="featured first">
+				<h4>Educational video</h4>
+				<h5>Take advantage of our educational video </h5>
+				<img alt="Educational video" src="@{'/public/images/education_icon.png'}">
+			</div>
+			<div class="featured center">
+				<h4>Experts with hi-quality solution</h4>
+				<h5>By choosing experts you are choosing a hi-quality solution</h5>
+				<img alt="Experts with hi-quality solution" src="@{'/public/images/expert_icon.png'}">
+			</div>
+			<div class="featured last">
+				<h4>Course specific videos</h4>
+				<h5>Purchase the complete package for course, its easy!</h5>
+				<img alt="Course specific videos" src="@{'/public/images/spec_icon.png'}">
+			</div>
+			<div class="clear"></div>
+		</div>
+		<!-- featured div ends here -->
+<ul>
+
+<div class="main">
+#{list items:business, as:'bus'}
+	<li>
+		${bus.name}<br/>
+		${bus.summary}
+	</li>
+#{/list}
+</ul>
+</div>

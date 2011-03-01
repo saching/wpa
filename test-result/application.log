@@ -1,0 +1,10 @@
+28 Feb 2011 11:46:44,794 INFO  ~ Starting C:\LocalDisk\JavaDevelopement\play\projects\wpa
+28 Feb 2011 11:46:44,803 INFO  ~ Module db is available (C:\LocalDisk\JavaDevelopement\play\play\modules\db-1.0.1)
+28 Feb 2011 11:46:45,636 WARN  ~ You're running Play! in DEV mode
+28 Feb 2011 11:46:45,775 INFO  ~ Listening for HTTP on port 9001 (Waiting a first request to start) ...
+28 Feb 2011 11:47:22,734 WARN  ~ Ignoring db.driver because running the in memory db.
+28 Feb 2011 11:47:22,734 WARN  ~ Ignoring db.url because running the in memory db.
+28 Feb 2011 11:47:23,295 INFO  ~ Connected to jdbc:hsqldb:mem:playembed
+28 Feb 2011 11:47:24,606 INFO  ~ Application 'Yes' is now started !
+28 Feb 2011 11:52:35,753 WARN  ~ Ignoring db.driver because running the in memory db.
+28 Feb 2011 11:52:35,754 WARN  ~ Ignoring db.url because running the in memory db.

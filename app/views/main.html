@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>#{get 'title' /}</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" type="text/css" media="screen"
+		href="@{'/public/stylesheets/easy.css'}">
+	<link rel="stylesheet" type="text/css" media="print"
+		href="@{'/public/stylesheets/easyprint.css'}">
+	#{get 'moreStyles' /}
+	<link rel="shortcut icon" type="image/png"
+		href="@{'/public/images/favicon.png'}">
+	<script src="@{'/public/javascripts/jquery-1.4.2.min.js'}"
+		type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="@{'/public/javascripts/easy.js'}"></script>
+	<script type="text/javascript" src="@{'/public/javascripts/main.js'}"></script>
+	#{get 'moreScripts' /}
+</head>
+<body>
+
+	<!-- container div starts here -->
+	<div id="container">
+	
+		<!-- header div starts here -->
+		<div id="header">
+		
+			<div id="heading">
+				<h1>Wpa Systems</h1>
+				<h3>Watch your tuts</h3>
+			</div>
+			<!-- menu div starts here -->
+			<div id="menu">
+				<ul id="nav">
+					<li class="#{get 'menu'==null ?'selected': ''/}"><a href="/">Home</a></li>
+					<li class="#{get 'menu'=='recents' ?'selected': ''/}"><a href="@{Screencasts.recents()}">Recent Videos</a>
+				<!-- <ul>
+						<li><a href="#">Sub-navigation item</a></li>
+						<li><a href="#">Sub-navigation item</a></li>
+						<li><a href="#">Sub-navigation item</a></li>
+						<li><a href="#">Sub-navigation item</a></li>
+					</ul> -->	
+					</li>
+					<li><a href="http://easyframework.com/documentation.php">Documentation</a></li>
+					<li><a href="http://easyframework.com/demo.php">Demo</a></li>
+					<li><a href="http://easyframework.com/contact.php">Contact</a></li>
+				</ul>
+			</div>
+			<!-- header div ends here -->
+		
+		</div>
+		<!-- header div ends here -->
+	
+		<!-- content div starts here -->
+		<div class="content">
+			#{doLayout /}
+		</div>
+		<!-- content div ends here -->
+	
+		<!-- footer div starts here -->
+		<div id="footer">
+			<p>&copy; 2011 wpa | created by <a target="_blank"
+				href="http://www.siddhatech.com">Siddhatech software</a> | Valid XHTML 1.0
+			Strict and CSS</p>
+		</div>
+		<!-- footer div ends here -->
+		
+	</div>
+	<!-- container div ends here -->
+
+</body>
+</html>
+
