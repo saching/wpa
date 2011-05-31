@@ -1,3 +1,28 @@
-# You can specialize this file for each language.
-# For example, for French create a messages.fr file
-#
+secure.title=Login
+secure.username=Username
+secure.password=Password
+secure.remember=Remember me
+secure.signin=Sign in
+secure.error=Oops, unknown username or password.
+secure.logout=You have been logged out
+secure.register=User Registration
+user.username=Username
+user.password=Password
+user.repeatpassword=Repeat-Password
+user.password=Password
+user.firstname=First name
+user.lastname=Last name
+user.email=Email
+secure.registerSuccess=Registration successful.
+form.save=Save
+text.captchatext=Please type the code below:
+button.register=Register
+
+userprofile.gender=Gender
+userprofile.dob=Date of Birth
+userprofile.address=Address
+userprofile.city=City
+userprofile.state=State
+userprofile.country=Country
+userprofile.zipcode=Zip Code
+

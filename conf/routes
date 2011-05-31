@@ -5,8 +5,18 @@
 # Home page
 GET     /                                       Application.index
 
+#captcha
+GET     /captcha                                Application.captcha
+
+GET     /login                                  Secure.login
+GET     /logout                                 Secure.logout
+
+#facebook
+GET     /fbconnect                              Application.fbconnect
+
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public
+
 
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}
