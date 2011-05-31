@@ -1,10 +1,165 @@
-28 Feb 2011 11:46:44,794 INFO  ~ Starting C:\LocalDisk\JavaDevelopement\play\projects\wpa
-28 Feb 2011 11:46:44,803 INFO  ~ Module db is available (C:\LocalDisk\JavaDevelopement\play\play\modules\db-1.0.1)
-28 Feb 2011 11:46:45,636 WARN  ~ You're running Play! in DEV mode
-28 Feb 2011 11:46:45,775 INFO  ~ Listening for HTTP on port 9001 (Waiting a first request to start) ...
-28 Feb 2011 11:47:22,734 WARN  ~ Ignoring db.driver because running the in memory db.
-28 Feb 2011 11:47:22,734 WARN  ~ Ignoring db.url because running the in memory db.
-28 Feb 2011 11:47:23,295 INFO  ~ Connected to jdbc:hsqldb:mem:playembed
-28 Feb 2011 11:47:24,606 INFO  ~ Application 'Yes' is now started !
-28 Feb 2011 11:52:35,753 WARN  ~ Ignoring db.driver because running the in memory db.
-28 Feb 2011 11:52:35,754 WARN  ~ Ignoring db.url because running the in memory db.
+07 Mar 2011 19:19:22,282 INFO  ~ Starting C:\LocalDisk\JavaDevelopement\play\projects\wpa
+07 Mar 2011 19:19:22,282 INFO  ~ Module secure is available (C:\LocalDisk\JavaDevelopement\play\play\modules\secure)
+07 Mar 2011 19:19:22,282 INFO  ~ Module fbconnect is available (C:\LocalDisk\JavaDevelopement\play\play\modules\fbconnect-0.4)
+07 Mar 2011 19:19:22,298 INFO  ~ Module db is available (C:\LocalDisk\JavaDevelopement\play\play\modules\db-1.1.1)
+07 Mar 2011 19:19:23,093 WARN  ~ You're running Play! in DEV mode
+07 Mar 2011 19:19:23,234 INFO  ~ Listening for HTTP on port 9001 (Waiting a first request to start) ...
+07 Mar 2011 19:20:42,919 WARN  ~ Ignoring db.driver because running the in memory db.
+07 Mar 2011 19:20:42,919 WARN  ~ Ignoring db.url because running the in memory db.
+07 Mar 2011 19:20:43,527 INFO  ~ Connected to jdbc:hsqldb:mem:playembed
+07 Mar 2011 19:20:45,071 ERROR ~ Unsuccessful: create table wpa.follower_log (id integer not null, created_at timestamp not null, follower_id integer not null, user_id integer not null, primary key (id), unique (id))
+07 Mar 2011 19:20:45,071 ERROR ~ invalid schema name: WPA in statement [create table wpa.follower_log]
+07 Mar 2011 19:20:45,071 ERROR ~ Unsuccessful: create table wpa.screencast (id integer not null, description varchar(65535) not null, is_deleted bit not null, is_reviewed bit not null, title varchar(255) not null, uploaded_on timestamp not null, url varchar(255) not null, type integer not null, uploaded_by integer not null, primary key (id), unique (id))
+07 Mar 2011 19:20:45,071 ERROR ~ invalid schema name: WPA in statement [create table wpa.screencast]
+07 Mar 2011 19:20:45,071 ERROR ~ Unsuccessful: create table wpa.screencast_comment (id integer not null, comments varchar(65535) not null, created_at timestamp not null, screencast_id integer not null, user_id integer not null, primary key (id), unique (id))
+07 Mar 2011 19:20:45,071 ERROR ~ invalid schema name: WPA in statement [create table wpa.screencast_comment]
+07 Mar 2011 19:20:45,071 ERROR ~ Unsuccessful: create table wpa.screencast_likes (id integer not null, created_at timestamp not null, like bit not null, screencast_id integer not null, user_id integer not null, primary key (id), unique (id))
+07 Mar 2011 19:20:45,071 ERROR ~ invalid schema name: WPA in statement [create table wpa.screencast_likes]
+07 Mar 2011 19:20:45,071 ERROR ~ Unsuccessful: create table wpa.screencast_related (id integer not null, created_at timestamp not null, related_screencast_id integer not null, screencast_id integer not null, primary key (id), unique (id))
+07 Mar 2011 19:20:45,071 ERROR ~ invalid schema name: WPA in statement [create table wpa.screencast_related]
+07 Mar 2011 19:20:45,087 ERROR ~ Unsuccessful: create table wpa.screencast_type (id integer not null, description varchar(65535), type varchar(50) not null, primary key (id), unique (type), unique (id))
+07 Mar 2011 19:20:45,087 ERROR ~ invalid schema name: WPA in statement [create table wpa.screencast_type]
+07 Mar 2011 19:20:45,087 ERROR ~ Unsuccessful: create table wpa.screencast_view_log (id integer not null, created_at timestamp not null, screencast_id integer not null, user_id integer not null, primary key (id), unique (id))
+07 Mar 2011 19:20:45,087 ERROR ~ invalid schema name: WPA in statement [create table wpa.screencast_view_log]
+07 Mar 2011 19:20:45,087 ERROR ~ Unsuccessful: create table wpa.user (id integer not null, created_at timestamp not null, email varchar(255) not null, firstname varchar(255), is_active bit not null, lastname varchar(255), password varchar(255) not null, repeatpassword varchar(255), slug varchar(255) not null, username varchar(255) not null, primary key (id), unique (username, email), unique (id), unique (slug))
+07 Mar 2011 19:20:45,087 ERROR ~ invalid schema name: WPA in statement [create table wpa.user]
+07 Mar 2011 19:20:45,087 ERROR ~ Unsuccessful: create table wpa.user_profile (id integer not null, address varchar(1000), avatar varchar(1000), city varchar(255), country varchar(255), created_at timestamp not null, dob timestamp, gender bit, screencast_interests varchar(255), state varchar(255), user_id integer not null, zipcode varchar(10), primary key (id), unique (id), unique (user_id))
+07 Mar 2011 19:20:45,087 ERROR ~ invalid schema name: WPA in statement [create table wpa.user_profile]
+07 Mar 2011 19:20:45,087 ERROR ~ Unsuccessful: alter table wpa.follower_log add constraint FK9040B3A3AF5715CB foreign key (follower_id) references wpa.user
+07 Mar 2011 19:20:45,087 ERROR ~ invalid schema name: WPA in statement [alter table wpa.follower_log]
+07 Mar 2011 19:20:45,087 ERROR ~ Unsuccessful: alter table wpa.follower_log add constraint FK9040B3A347140EFE foreign key (user_id) references wpa.user
+07 Mar 2011 19:20:45,087 ERROR ~ invalid schema name: WPA in statement [alter table wpa.follower_log]
+07 Mar 2011 19:20:45,087 ERROR ~ Unsuccessful: alter table wpa.screencast add constraint FKE72625AB8FA0D785 foreign key (uploaded_by) references wpa.user
+07 Mar 2011 19:20:45,087 ERROR ~ invalid schema name: WPA in statement [alter table wpa.screencast]
+07 Mar 2011 19:20:45,087 ERROR ~ Unsuccessful: alter table wpa.screencast add constraint FKE72625ABEDA102E3 foreign key (type) references wpa.screencast_type
+07 Mar 2011 19:20:45,087 ERROR ~ invalid schema name: WPA in statement [alter table wpa.screencast]
+07 Mar 2011 19:20:45,087 ERROR ~ Unsuccessful: alter table wpa.screencast_comment add constraint FK141CDFCB47140EFE foreign key (user_id) references wpa.user
+07 Mar 2011 19:20:45,087 ERROR ~ invalid schema name: WPA in statement [alter table wpa.screencast_comment]
+07 Mar 2011 19:20:45,087 ERROR ~ Unsuccessful: alter table wpa.screencast_comment add constraint FK141CDFCBA027D7FE foreign key (screencast_id) references wpa.screencast
+07 Mar 2011 19:20:45,087 ERROR ~ invalid schema name: WPA in statement [alter table wpa.screencast_comment]
+07 Mar 2011 19:20:45,103 ERROR ~ Unsuccessful: alter table wpa.screencast_likes add constraint FKB73FA02847140EFE foreign key (user_id) references wpa.user
+07 Mar 2011 19:20:45,103 ERROR ~ invalid schema name: WPA in statement [alter table wpa.screencast_likes]
+07 Mar 2011 19:20:45,103 ERROR ~ Unsuccessful: alter table wpa.screencast_likes add constraint FKB73FA028A027D7FE foreign key (screencast_id) references wpa.screencast
+07 Mar 2011 19:20:45,103 ERROR ~ invalid schema name: WPA in statement [alter table wpa.screencast_likes]
+07 Mar 2011 19:20:45,103 ERROR ~ Unsuccessful: alter table wpa.screencast_related add constraint FK1C768D9754CF1EEA foreign key (related_screencast_id) references wpa.screencast
+07 Mar 2011 19:20:45,103 ERROR ~ invalid schema name: WPA in statement [alter table wpa.screencast_related]
+07 Mar 2011 19:20:45,103 ERROR ~ Unsuccessful: alter table wpa.screencast_related add constraint FK1C768D97A027D7FE foreign key (screencast_id) references wpa.screencast
+07 Mar 2011 19:20:45,103 ERROR ~ invalid schema name: WPA in statement [alter table wpa.screencast_related]
+07 Mar 2011 19:20:45,103 ERROR ~ Unsuccessful: alter table wpa.screencast_view_log add constraint FKDAB36EBE47140EFE foreign key (user_id) references wpa.user
+07 Mar 2011 19:20:45,103 ERROR ~ invalid schema name: WPA in statement [alter table wpa.screencast_view_log]
+07 Mar 2011 19:20:45,103 ERROR ~ Unsuccessful: alter table wpa.screencast_view_log add constraint FKDAB36EBEA027D7FE foreign key (screencast_id) references wpa.screencast
+07 Mar 2011 19:20:45,103 ERROR ~ invalid schema name: WPA in statement [alter table wpa.screencast_view_log]
+07 Mar 2011 19:20:45,227 INFO  ~ Application 'Yes' is now started !
+07 Mar 2011 19:21:21,825 WARN  ~ SQL Error: -227, SQLState: 3F000
+07 Mar 2011 19:21:21,825 ERROR ~ invalid schema name: WPA in statement [select top ? user0_.id as id5_, user0_.created_at as created2_5_, user0_.email as email5_, user0_.firstname as firstname5_, user0_.is_active as is5_5_, user0_.lastname as lastname5_, user0_.password as password5_, user0_.repeatpassword as repeatpa8_5_, user0_.slug as slug5_, user0_.username as username5_ from wpa.user user0_ where user0_.username=?]
+07 Mar 2011 19:22:32,010 WARN  ~ Ignoring db.driver because running the in memory db.
+07 Mar 2011 19:22:32,010 WARN  ~ Ignoring db.url because running the in memory db.
+07 Mar 2011 19:22:32,228 ERROR ~ Unsuccessful: create table screencast_likes (id integer not null, created_at timestamp not null, like bit not null, screencast_id integer not null, user_id integer not null, primary key (id), unique (id))
+07 Mar 2011 19:22:32,228 ERROR ~ Unexpected token: LIKE in statement [create table screencast_likes (id integer not null, created_at timestamp not null, like]
+07 Mar 2011 19:22:32,228 ERROR ~ Unsuccessful: alter table screencast_likes add constraint FKB73FA02847140EFE foreign key (user_id) references user
+07 Mar 2011 19:22:32,228 ERROR ~ Table not found: SCREENCAST_LIKES in statement [alter table screencast_likes]
+07 Mar 2011 19:22:32,228 ERROR ~ Unsuccessful: alter table screencast_likes add constraint FKB73FA028A027D7FE foreign key (screencast_id) references screencast
+07 Mar 2011 19:22:32,228 ERROR ~ Table not found: SCREENCAST_LIKES in statement [alter table screencast_likes]
+07 Mar 2011 19:34:11,245 WARN  ~ Ignoring db.driver because running the in memory db.
+07 Mar 2011 19:34:11,245 WARN  ~ Ignoring db.url because running the in memory db.
+07 Mar 2011 19:34:11,432 ERROR ~ Unsuccessful: create table screencast_likes (id integer not null, created_at timestamp not null, like bit not null, screencast_id integer not null, user_id integer not null, primary key (id), unique (id))
+07 Mar 2011 19:34:11,432 ERROR ~ Unexpected token: LIKE in statement [create table screencast_likes (id integer not null, created_at timestamp not null, like]
+07 Mar 2011 19:34:11,432 ERROR ~ Unsuccessful: alter table screencast_likes add constraint FKB73FA02847140EFE foreign key (user_id) references user
+07 Mar 2011 19:34:11,432 ERROR ~ Table not found: SCREENCAST_LIKES in statement [alter table screencast_likes]
+07 Mar 2011 19:34:11,432 ERROR ~ Unsuccessful: alter table screencast_likes add constraint FKB73FA028A027D7FE foreign key (screencast_id) references screencast
+07 Mar 2011 19:34:11,432 ERROR ~ Table not found: SCREENCAST_LIKES in statement [alter table screencast_likes]
+07 Mar 2011 19:35:59,447 WARN  ~ Ignoring db.driver because running the in memory db.
+07 Mar 2011 19:35:59,447 WARN  ~ Ignoring db.url because running the in memory db.
+07 Mar 2011 19:35:59,634 ERROR ~ Unsuccessful: create table screencast_likes (id integer not null, created_at timestamp not null, like bit not null, screencast_id integer not null, user_id integer not null, primary key (id), unique (id))
+07 Mar 2011 19:35:59,634 ERROR ~ Unexpected token: LIKE in statement [create table screencast_likes (id integer not null, created_at timestamp not null, like]
+07 Mar 2011 19:35:59,634 ERROR ~ Unsuccessful: alter table screencast_likes add constraint FKB73FA02847140EFE foreign key (user_id) references user
+07 Mar 2011 19:35:59,634 ERROR ~ Table not found: SCREENCAST_LIKES in statement [alter table screencast_likes]
+07 Mar 2011 19:35:59,634 ERROR ~ Unsuccessful: alter table screencast_likes add constraint FKB73FA028A027D7FE foreign key (screencast_id) references screencast
+07 Mar 2011 19:35:59,634 ERROR ~ Table not found: SCREENCAST_LIKES in statement [alter table screencast_likes]
+07 Mar 2011 19:37:36,495 WARN  ~ Ignoring db.driver because running the in memory db.
+07 Mar 2011 19:37:36,495 WARN  ~ Ignoring db.url because running the in memory db.
+07 Mar 2011 19:37:36,682 ERROR ~ Unsuccessful: create table screencast_likes (id integer not null, created_at timestamp not null, like bit not null, screencast_id integer not null, user_id integer not null, primary key (id), unique (id))
+07 Mar 2011 19:37:36,682 ERROR ~ Unexpected token: LIKE in statement [create table screencast_likes (id integer not null, created_at timestamp not null, like]
+07 Mar 2011 19:37:36,682 ERROR ~ Unsuccessful: alter table screencast_likes add constraint FKB73FA02847140EFE foreign key (user_id) references user
+07 Mar 2011 19:37:36,682 ERROR ~ Table not found: SCREENCAST_LIKES in statement [alter table screencast_likes]
+07 Mar 2011 19:37:36,682 ERROR ~ Unsuccessful: alter table screencast_likes add constraint FKB73FA028A027D7FE foreign key (screencast_id) references screencast
+07 Mar 2011 19:37:36,682 ERROR ~ Table not found: SCREENCAST_LIKES in statement [alter table screencast_likes]
+07 Mar 2011 19:40:32,978 WARN  ~ Ignoring db.driver because running the in memory db.
+07 Mar 2011 19:40:32,978 WARN  ~ Ignoring db.url because running the in memory db.
+07 Mar 2011 19:40:33,368 ERROR ~ Unsuccessful: create table screencast_likes (id integer not null, created_at timestamp not null, like bit not null, screencast_id integer not null, user_id integer not null, primary key (id), unique (id))
+07 Mar 2011 19:40:33,368 ERROR ~ Unexpected token: LIKE in statement [create table screencast_likes (id integer not null, created_at timestamp not null, like]
+07 Mar 2011 19:40:33,368 ERROR ~ Unsuccessful: alter table screencast_likes add constraint FKB73FA02847140EFE foreign key (user_id) references user
+07 Mar 2011 19:40:33,399 ERROR ~ Table not found: SCREENCAST_LIKES in statement [alter table screencast_likes]
+07 Mar 2011 19:40:33,399 ERROR ~ Unsuccessful: alter table screencast_likes add constraint FKB73FA028A027D7FE foreign key (screencast_id) references screencast
+07 Mar 2011 19:40:33,399 ERROR ~ Table not found: SCREENCAST_LIKES in statement [alter table screencast_likes]
+07 Mar 2011 19:43:18,490 WARN  ~ SQL Error: 0, SQLState: null
+07 Mar 2011 19:43:18,490 ERROR ~ failed batch
+07 Mar 2011 19:43:18,506 ERROR ~ Could not synchronize database state with session
+org.hibernate.exception.GenericJDBCException: Could not execute JDBC batch update
+	at org.hibernate.exception.SQLStateConverter.handledNonSpecificException(SQLStateConverter.java:140)
+	at org.hibernate.exception.SQLStateConverter.convert(SQLStateConverter.java:128)
+	at org.hibernate.exception.JDBCExceptionHelper.convert(JDBCExceptionHelper.java:66)
+	at org.hibernate.jdbc.AbstractBatcher.executeBatch(AbstractBatcher.java:275)
+	at org.hibernate.engine.ActionQueue.executeActions(ActionQueue.java:262)
+	at org.hibernate.engine.ActionQueue.executeActions(ActionQueue.java:178)
+	at org.hibernate.event.def.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:345)
+	at org.hibernate.event.def.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:51)
+	at org.hibernate.impl.SessionImpl.flush(SessionImpl.java:1206)
+	at org.hibernate.ejb.AbstractEntityManagerImpl.flush(AbstractEntityManagerImpl.java:791)
+	at play.db.jpa.JPABase._save(JPABase.java:47)
+	at play.db.jpa.GenericModel.save(GenericModel.java:187)
+	at controller.unit.UserTest.testGetUserByUsername(UserTest.java:27)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:44)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:15)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:41)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:20)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:76)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:50)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
+	at org.junit.runners.Suite.runChild(Suite.java:128)
+	at org.junit.runners.Suite.runChild(Suite.java:24)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:193)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:52)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:191)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:42)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:184)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:236)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:157)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:136)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:117)
+	at play.test.TestEngine.run(TestEngine.java:130)
+	at controllers.TestRunner.run(TestRunner.java:66)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
+	at java.lang.reflect.Method.invoke(Method.java:597)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:413)
+	at play.mvc.ActionInvoker.invokeControllerMethod(ActionInvoker.java:408)
+	at play.mvc.ActionInvoker.invoke(ActionInvoker.java:182)
+	at play.server.PlayHandler$NettyInvocation.execute(PlayHandler.java:169)
+	at play.Invoker$Invocation.run(Invoker.java:187)
+	at play.server.PlayHandler$NettyInvocation.run(PlayHandler.java:149)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:441)
+	at java.util.concurrent.FutureTask$Sync.innerRun(FutureTask.java:303)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:138)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$301(ScheduledThreadPoolExecutor.java:98)
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:207)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.runTask(ThreadPoolExecutor.java:886)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:908)
+	at java.lang.Thread.run(Thread.java:619)
+Caused by: java.sql.BatchUpdateException: failed batch
+	at org.hsqldb.jdbc.jdbcStatement.executeBatch(Unknown Source)
+	at org.hsqldb.jdbc.jdbcPreparedStatement.executeBatch(Unknown Source)
+	at com.mchange.v2.c3p0.impl.NewProxyPreparedStatement.executeBatch(NewProxyPreparedStatement.java:1723)
+	at org.hibernate.jdbc.BatchingBatcher.doExecuteBatch(BatchingBatcher.java:70)
+	at org.hibernate.jdbc.AbstractBatcher.executeBatch(AbstractBatcher.java:268)
+	... 56 more
