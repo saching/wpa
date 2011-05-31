@@ -1,0 +1,16 @@
+#{extends 'main.html' /}
+#{set title:'WPA - home' /}
+#{set menu:'recents' /}
+
+<h1>&{'secure.registerSuccess'}</h1>
+<p>
+		#{if flash.success}
+			<p class="success">
+				&{flash.success}
+			</p>
+		#{/if}
+		
+		<p>
+			Registration mail has been to sent to mail account. Check your mail and activate your account.
+		</p>
+</p>

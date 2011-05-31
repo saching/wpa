@@ -1,0 +1,40 @@
+#{extends 'main.html' /}
+#{set title:'WPA - home' /}
+#{set menu:'recents' /}
+
+<div class="main">
+
+	#{form @Users.postPassword()}
+		
+		#{if flash.success}
+			<p class="success">
+				&{flash.success}
+			</p>
+		#{/if}
+		
+		#{if flash.error}
+			<p class="error">
+				&{flash.error}
+			</p>
+		#{/if}
+		
+		<br />
+		<p>
+			Please enter password for your WPA account.
+		</p>
+		<p id="password-field">
+			<label for="password">&{'user.password'}</label>
+			<input type="password" name="password" id="password" value="" />
+			<span class="error">#{error 'password' /}</span>
+		</p>
+		<p id="password-field">
+			<label for="password">&{'user.repeatpassword'}</label>
+			<input type="password" name="repeatpassword" id="repeatpassword" value="" />
+			<span class="error">#{error 'repeatpassword' /}</span>
+		</p>
+		<p id="signin-field">
+			<input type="submit" id="signin" class="submitbutton" value="&{'form.save'}" />
+		</p>
+	
+	#{/form}
+</div>

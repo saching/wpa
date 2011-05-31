@@ -1,0 +1,58 @@
+#{extends 'main.html' /}
+#{set title:'WPA - profile' /}
+#{set menu:'profile' /}
+
+#{if user}
+<h1>Profile</h1>
+
+<div id="profile_details">
+	
+	<h4>Account Settings</h4>
+	
+	<div>
+		<label>Username</label>
+		<span>${user.username}</span>		
+	</div>
+	<div>
+		<label>Email</label>
+		<span>${user.email}</span>
+	</div>
+	<div>
+		<label>Name</label>
+		<span>${user.firstname + " " + user.lastname}</span>
+	</div>
+	<br />
+	
+	
+	<h4>Profile Details</h4>
+	#{if userprofile}
+	<div>
+		<label>Address</label>
+		<span>
+		${userprofile.fullAddress}
+		</span>
+	</div>
+	<div>
+		<label>Gender</label>
+		<span>#{if userprofile.gender}Male #{/if}#{ifnot userprofile.gender}Female #{/ifnot}</span>
+	</div>
+	<div>
+		<label>Date of Birth</label>
+		<span>${userprofile.dob.format('dd MMMM yyyy')}</span>
+	</div>
+	#{/if}
+	#{ifnot userprofile}
+		<div>
+			<span>Profile details not found.</span>
+		</div>
+	#{/ifnot}
+</div>
+#{/if}
+#{ifnot user}
+	<h1 class="error">Invalid Access</h1>
+	<p class="error">Your are trying to access non-exist user or you are not logged in <a href="@{Secure.login}">click here</a> to login</p>
+#{/ifnot}
+<div class="margin_10px" ></div>
+<a class="floatl marginl_18" href="@{editProfile}">Edit profile</a>
+		
+	

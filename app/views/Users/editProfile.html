@@ -1,0 +1,167 @@
+#{if layout}
+	#{extends 'main.html' /}
+	#{set title:'WPA - profile' /}
+	#{set menu:'profile' /}
+#{/if}
+
+<style>
+.tab_content h4{
+	background-color: #EFEFEF;
+	border-bottom: 1px solid #DFDFDF;
+	font-weight: bold;
+	line-height: 25px;
+	padding-left:2%;
+	font-size: 12px; 
+	float:left;
+	width: 98%;
+	margin:0 0 25px;
+}
+.tab_content{display: none;}
+.div_${"account" == form?"account":"profile"}_details{display: block;}
+</style>
+
+#{if flash.success}
+	<p class="success">
+		&{flash.success}
+	</p>
+#{/if}
+
+#{if flash.error}
+	<p class="error">
+		&{flash.error}
+	</p>
+#{/if}
+#{if user}	
+
+	<ul class="ul_submenu_list">
+		
+		<li class='${"account" == form?"selected":""}'>
+			<a id="div_account_details" class="submenu_list" href="javascript:void(0);">Edit Account</a>
+		</li>
+		<li class='${"profile" == form?"selected":""}'>
+			<a id="div_profile_details" class="submenu_list" href="javascript:void(0);">Edit Profile Details</a>
+		</li>		
+	</ul>
+
+
+<div id="">	
+		
+	<div class="div_account_details tab_content">
+	<h4>Account Settings</h4>
+	#{form @updateAccount()}
+	<input type="hidden" name="user.id" value="${user.id}">
+	<input type="hidden" name="user.email" value="${user.email}">
+	<input type="hidden" name="user.username" value="${user.username}">
+		<p id="username-field">
+			<label for="username" class="strong">&{'user.username'}</label>
+			${user.username}
+		</p>
+		<p id="username-field">
+			<label for="username" class="strong">&{'user.email'}</label>
+			${user.email}
+		</p>
+		<p id="password-field">
+			<label for="password">&{'user.password'}</label>
+			<input type="password" name="user.password" id="user_password" value="" />
+			<span class="error">#{error 'user.password' /}</span>
+		</p>
+		<p id="password-field">
+			<label for="password">&{'user.repeatpassword'}</label>
+			<input type="password" name="user.repeatpassword" id="user_repeatpassword" value="" />
+			<span class="error">#{error 'user.repeatpassword' /}</span>
+		</p>
+		<p id="username-field">
+			<label for="username">&{'user.firstname'}</label>
+			<input type="text" name="user.firstname" id="user_firstname" value="${user.firstname}" />
+		</p>
+		<p id="username-field">
+			<label for="username">&{'user.lastname'}</label>
+			<input type="text" name="user.lastname" id="user_lastname" value="${user.lastname}" />
+		</p>
+		<p id="signin-field">
+			<input type="submit" id="signin" class="submitbutton" value="Update" />
+		</p>
+	#{/form}
+	
+	</div>
+	<div class="div_profile_details tab_content">
+	<h4>Profile Details</h4>
+	#{if userprofile}
+	#{form @Users.updateDetails()}
+	<input type="hidden" name="userprofile.id" value="${userprofile.id}" />
+    <input type="hidden" name="userprofile.userId" value="${userprofile.userId}" />
+    	<p id="profile-field">
+			<label for="address">&{'userprofile.gender'}</label>
+			#{select 'userprofile.gender', value: userprofile.gender, id:'select1'}
+				#{option 1}Male#{/option}
+				#{option 0}Female#{/option}
+			#{/select}
+			<span class="error">#{error 'userprofile.gender' /}</span>
+		</p>
+		<p id="profile-field">
+			<label for="address">&{'userprofile.dob'}</label>
+			<input type="text" name="userprofile.dob" class="datepicker" id="userprofile_dob" value="${userprofile.dob.format('dd-MM-yyyy')}" />
+			<span class="error">#{error 'userprofile.dob' /}</span>
+		</p>
+		<p id="profile-field">
+			<label for="address">&{'userprofile.address'}</label>
+			<input type="text" name="userprofile.address" id="userprofile_address" value="${userprofile.address}" />
+			<span class="error">#{error 'userprofile.address' /}</span>
+		</p>
+		<p id="profile-field">
+			<label for="address">&{'userprofile.city'}</label>
+			<input type="text" name="userprofile.city" id="userprofile_city" value="${userprofile.city}" />
+			<span class="error">#{error 'userprofile.city' /}</span>
+		</p>
+		<p id="profile-field">
+			<label for="address">&{'userprofile.state'}</label>
+			<input type="text" name="userprofile.state" id="userprofile_state" value="${userprofile.state}" />
+			<span class="error">#{error 'userprofile.state' /}</span>
+		</p>
+		<p id="profile-field">
+			<label for="address">&{'userprofile.country'}</label>
+			<input type="text" name="userprofile.country" id="userprofile_country" value="${userprofile.country}" />
+			<span class="error">#{error 'userprofile.country' /}</span>
+		</p>
+		<p id="profile-field">
+			<label for="address">&{'userprofile.zipcode'}</label>
+			<input type="text" name="userprofile.zipcode" id="userprofile_zipcode" value="${userprofile.zipcode}" />
+			<span class="error">#{error 'userprofile.zipcode' /}</span>
+		</p>
+		<p id="signin-field">
+			<input type="submit" id="signin" class="submitbutton" value="Update" />
+		</p>
+	#{/form}
+	#{/if}
+	</div>
+	#{ifnot userprofile}
+		<div>
+			<span>Profile details not found.</span>
+		</div>
+	#{/ifnot}
+</div>
+#{/if}
+#{ifnot user}
+	<h1 class="error">Invalid Access</h1>
+	<p class="error">Your are trying to access non-exist user or you are not logged in <a href="@{Secure.login}">click here</a> to login</p>
+#{/ifnot}
+<script type="text/javascript">
+$(document).ready(function(){
+	$("div.tab_content form").submit(function(){
+	   $('.content').addClass('opaque');
+	   $.ajax({
+		   type: "POST",
+		   data: $(this).serialize(), 
+		   url: $(this).attr('action'),
+		   success: function(msg){
+		   		$('.content').html(msg);
+		   		$('.content').removeClass('opaque');
+		   		$(".datepicker").datepicker({ altFormat: 'dd-mm-yyyy', dateFormat: 'dd-mm-yy', disabled: true });
+		   }
+		 });
+        return false;
+	});
+ 
+});
+</script>
+	

@@ -1,0 +1,59 @@
+#{extends 'main.html' /}
+#{set title:'WPA - User Registration' /}
+#{set menu:'recents' /}
+
+<h1>&{'secure.register'}</h1>
+		
+	#{form @postRegister()}
+		
+		#{if flash.error}
+			<p class="error">
+				&{flash.error}
+			</p>
+		#{/if}
+		#{if flash.success}
+			<p class="success">
+				&{flash.success}
+			</p>
+		#{/if}
+	
+		<p id="username-field">
+			<label for="username">&{'user.username'}</label>
+			<input type="text" name="username" id="username" value="${flash.username}" />
+			<span class="error">#{error 'username' /}</span>
+		</p>
+		<p id="password-field">
+			<label for="password">&{'user.password'}</label>
+			<input type="password" name="password" id="password" value="" />
+			<span class="error">#{error 'password' /}</span>
+		</p>
+		<p id="password-field">
+			<label for="password">&{'user.repeatpassword'}</label>
+			<input type="password" name="repeatpassword" id="repeatpassword" value="" />
+			<span class="error">#{error 'repeatpassword' /}</span>
+		</p>
+		<p id="username-field">
+			<label for="username">&{'user.email'}</label>
+			<input type="text" name="email" id="email" value="${flash.email}" />
+			<span class="error">#{error 'email' /}</span>
+		</p>
+		<p id="username-field">
+			<label for="username">&{'user.firstname'}</label>
+			<input type="text" name="firstname" id="firstname" value="${flash.firstname}" />
+		</p>
+		<p id="username-field">
+			<label for="username">&{'user.lastname'}</label>
+			<input type="text" name="lastname" id="lastname" value="${flash.lastname}" />
+		</p>
+		<p>
+		    <label for="code">&{'text.captchatext'} </label>
+		    <img style="background-color: #4A5E78;" src="@{Application.captcha(randomID)}" />
+		    <br />
+		    <input type="text" name="code" id="code" size="18" value="" />
+		    <input type="hidden" name="randomID" value="${randomID}" />
+		    <span class="error">#{error 'code' /}</span>
+		</p>
+		<p id="signin-field">
+			<input type="submit" id="signin" class="submitbutton" value="&{'button.register'}" />
+		</p>
+	#{/form}

@@ -1,0 +1,90 @@
+#{extends 'main.html' /}
+#{set title:'WPA - profile' /}
+
+<style>
+#profile_details h4{
+	background-color: #EFEFEF;
+	border-bottom: 1px solid #DFDFDF;
+	font-weight: bold;
+	line-height: 25px;
+	padding-left:2%;
+	font-size: 12px; 
+	float:left;
+	width: 98%;
+	margin: 15px 0 5px;
+}
+
+#profile_details label{
+	width:150px;
+	color:gray;
+	font-weight: bold;
+	float: left;
+	clear: left;
+	margin-left: 2%;
+}
+
+#profile_details div{
+	padding: 3px 0;
+	float: left;
+	width: 100%;
+}
+
+#profile_details span{
+	float: left;
+	position: relative;
+	width:auto;
+}
+</style>
+
+#{if user}
+<h1>Profile</h1>
+
+<div id="profile_details">
+	
+	<h4>Account Settings</h4>
+	
+	<div>
+		<label>Username</label>
+		<span>${user.username}</span>		
+	</div>
+	<div>
+		<label>Email</label>
+		<span>${user.email}</span>
+	</div>
+	<div>
+		<label>Name</label>
+		<span>${user.firstname + " " + user.lastname}</span>
+	</div>
+	<br />
+	
+	
+	<h4>Profile Details</h4>
+	#{if userprofile}
+	<div>
+		<label>Address</label>
+		<span>
+		${userprofile.fullAddress}
+		</span>
+	</div>
+	<div>
+		<label>Gender</label>
+		<span>#{if userprofile.gender}Male #{/if}#{ifnot userprofile.gender}Female #{/ifnot}</span>
+	</div>
+	<div>
+		<label>Date of Birth</label>
+		<span>${userprofile.dob.format('dd MMMM yyyy')}</span>
+	</div>
+	#{/if}
+	#{ifnot userprofile}
+		<div>
+			<span>Profile details not found.</span>
+		</div>
+	#{/ifnot}
+</div>
+#{/if}
+#{ifnot user}
+	<h1 class="error">Invalid Access</h1>
+	<p class="error">Your are trying to access non-exist user or you are not logged in <a href="@{Secure.login}">click here</a> to login</p>
+#{/ifnot}
+		
+	
