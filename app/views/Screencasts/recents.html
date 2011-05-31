@@ -4,8 +4,8 @@
 
 <div class="main">
 <ul class="recent_video_list">
-#{list items:screencasts, as:'bus'}
-	<li>
+#{paginate.list items:screencasts, as:'bus'} 
+   <li>
 		<div class="video_icon">
 			<a href="#"><img src="@{'/public/images/'}/${bus.url}" /></a>
 		</div>
@@ -14,6 +14,6 @@
 		${bus.description}
 		</div>
 	</li>
-#{/list}
+#{/paginate.list}
 </ul>
 </div>

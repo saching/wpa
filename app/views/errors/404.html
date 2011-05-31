@@ -1,19 +1,7 @@
-<!DOCTYPE html>
+#{extends 'main.html' /}
+#{set title:'WPA - Page Not found' /}
 
-<html>
-    <head>
-        <title>Not found</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>    
-    </head>
-    <body>
-        #{if play.mode.name() == 'DEV'}
-            #{404 result /}
-        #{/if}
-        #{else}
-            <h1>Not found</h1>
-            <p>
-                ${result.message}
-            </p>
-        #{/else}
-    </body>
-</html>
+<h1>Oops! Page Not found</h1>
+<p>
+    Page you are requesting is not exists. <a href="@{Application.index()}">Click here</a> to go back on home page 
+</p>

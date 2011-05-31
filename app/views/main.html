@@ -6,15 +6,22 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<link rel="stylesheet" type="text/css" media="screen"
 		href="@{'/public/stylesheets/easy.css'}">
-	<link rel="stylesheet" type="text/css" media="print"
-		href="@{'/public/stylesheets/easyprint.css'}">
+	<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/play-fbconnect.min.css'}">
+	<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/jquery-ui-1.8.1.custom.css'}">
+	<link rel="stylesheet" type="text/css" media="screen" href="@{'/public/stylesheets/main.css'}">
+	<link rel="stylesheet" type="text/css" media="print" href="@{'/public/stylesheets/easyprint.css'}">
+	
+	
 	#{get 'moreStyles' /}
 	<link rel="shortcut icon" type="image/png"
 		href="@{'/public/images/favicon.png'}">
 	<script src="@{'/public/javascripts/jquery-1.4.2.min.js'}"
 		type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="@{'/public/javascripts/jquery-ui-1.8.1.custom.min.js'}"></script>
+	<script type="text/javascript" src="@{'/public/javascripts/jCookie.js'}"></script>        
 	<script type="text/javascript" src="@{'/public/javascripts/easy.js'}"></script>
 	<script type="text/javascript" src="@{'/public/javascripts/main.js'}"></script>
+	
 	#{get 'moreScripts' /}
 </head>
 <body>
@@ -29,23 +36,37 @@
 				<h1>Wpa Systems</h1>
 				<h3>Watch your tuts</h3>
 			</div>
-			<!-- menu div starts here -->
-			<div id="menu">
-				<ul id="nav">
-					<li class="#{get 'menu'==null ?'selected': ''/}"><a href="/">Home</a></li>
-					<li class="#{get 'menu'=='recents' ?'selected': ''/}"><a href="@{Screencasts.recents()}">Recent Videos</a>
-				<!-- <ul>
-						<li><a href="#">Sub-navigation item</a></li>
-						<li><a href="#">Sub-navigation item</a></li>
-						<li><a href="#">Sub-navigation item</a></li>
-						<li><a href="#">Sub-navigation item</a></li>
-					</ul> -->	
-					</li>
-					<li><a href="http://easyframework.com/documentation.php">Documentation</a></li>
-					<li><a href="http://easyframework.com/demo.php">Demo</a></li>
-					<li><a href="http://easyframework.com/contact.php">Contact</a></li>
-				</ul>
+			
+			<div class="float_r">
+			#{if username}
+				Welcome ${username}!
+			#{/if}
+			#{ifnot username}
+				#{fbconnect.button scope:'email,user_about_me,user_birthday', label:'Sign in with Facebook' /}
+			#{/ifnot}
 			</div>
+			
+			<!-- menu div starts here -->
+			<br style="clear: both;" />
+			<div class="invertedshiftdown">
+			<ul>
+			<li class="current home"><a href="/">Home</a></li>
+					#{ifnot username}
+					<li class="login"><a href="@{Secure.login()}">Login</a></li>
+					<li class="register"><a href="@{Application.register()}">Register</a></li>
+					<li><a href="#">Contact</a></li>
+					#{/ifnot}
+					#{if username}
+					<li class="recents"><a href="@{Screencasts.list('recent')}">Recent Videos</a></li>
+					<li class="profile"><a href="@{Users.view()}">Profile</a></li>
+					<li><a href="#">Contact</a></li>
+					<li><a href="@{Secure.logout()}">Logout</a></li>
+					#{/if}
+					
+				</ul>
+								
+			</div>
+			<br style="clear: both;" />
 			<!-- header div ends here -->
 		
 		</div>
@@ -67,6 +88,17 @@
 		
 	</div>
 	<!-- container div ends here -->
+	
+	<script type="text/javascript">
+	$(document).ready(function(){
+			//set current menu
+			if($(".#{get 'menu' /}").length){			
+				$(".current").removeClass("current");
+				$(".#{get 'menu' /}").addClass("current");
+			}
+		});
+	</script>
+	
 
 </body>
 </html>
