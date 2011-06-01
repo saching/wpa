@@ -1,0 +1,19 @@
+#{extends 'main.html' /}
+#{set title:'WPA - home' /}
+#{set menu:'recents' /}
+
+<div class="main">
+<ul class="recent_video_list">
+#{paginate.list items:screencasts, as:'bus'} 
+   <li>
+		<div class="video_icon">
+			<a href="#"><img src="@{'/public/images/'}/${bus.url}" /></a>
+		</div>
+		<div class="video_desc">
+		<h3>${bus.title}</h3>
+		${bus.description}
+		</div>
+	</li>
+#{/paginate.list}
+</ul>
+</div>
